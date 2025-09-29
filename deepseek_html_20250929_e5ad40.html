@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Kimia: Teori Atom & Notasi Unsur</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, -20px) rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a i {
+            margin-right: 8px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            border: 4px solid var(--primary);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 5px;
+        }
+        
+        .atomic-model {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .model-card {
+            flex: 1;
+            min-width: 250px;
+            border: 1px solid var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .model-header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .model-body {
+            padding: 1rem;
+        }
+        
+        .model-diagram {
+            width: 100%;
+            height: 180px;
+            background-color: var(--light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .model-diagram img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .interactive-section {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .option {
+            padding: 0.75rem;
+            border: 1px solid var(--light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .option.selected {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .notation-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .notation-box {
+            display: inline-block;
+            padding: 1rem;
+            border: 2px solid var(--dark);
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .element-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .element-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .element-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .element-symbol {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .element-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .element-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .atom-visualization {
+            width: 100%;
+            height: 300px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nucleus {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #e74c3c, #c0392b);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+        
+        .electron {
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #3498db, #2980b9);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+        
+        .orbit {
+            border: 1px dashed #bdc3c7;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .notation-calculator {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .atomic-model {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-atom"></i> Media Pembelajaran Kimia Interaktif</h1>
+            <p>Mempelajari Perkembangan Teori Atom dan Notasi Unsur</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link active" data-target="intro"><i class="fas fa-home"></i> Pengantar</a></li>
+            <li><a href="#" class="nav-link" data-target="teori-atom"><i class="fas fa-history"></i> Teori Atom</a></li>
+            <li><a href="#" class="nav-link" data-target="notasi-unsur"><i class="fas fa-flask"></i> Notasi Unsur</a></li>
+            <li><a href="#" class="nav-link" data-target="kuis"><i class="fas fa-question-circle"></i> Kuis Interaktif</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="intro" class="content-section">
+            <h2><i class="fas fa-book-open"></i> Pengantar Pembelajaran</h2>
+            <p>Selamat datang di media pembelajaran interaktif tentang perkembangan teori atom dan notasi unsur. Di sini Anda akan mempelajari bagaimana pemahaman manusia tentang atom berkembang dari waktu ke waktu, serta bagaimana notasi unsur digunakan untuk merepresentasikan atom-atom tersebut.</p>
+            
+            <div class="interactive-section">
+                <h3><i class="fas fa-lightbulb"></i> Apa yang akan Anda pelajari?</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Perkembangan teori atom dari zaman Yunani kuno hingga model modern</li>
+                    <li><i class="fas fa-check-circle"></i> Kontribusi ilmuwan seperti Dalton, Thomson, Rutherford, Bohr, dan Schrodinger</li>
+                    <li><i class="fas fa-check-circle"></i> Memahami notasi unsur dan partikel penyusun atom</li>
+                    <li><i class="fas fa-check-circle"></i> Mengidentifikasi nomor atom, nomor massa, dan isotop</li>
+                    <li><i class="fas fa-check-circle"></i> Menguji pemahaman dengan kuis interaktif</li>
+                </ul>
+            </div>
+            
+            <p>Gunakan navigasi di atas untuk menjelajahi berbagai bagian pembelajaran. Setiap bagian dilengkapi dengan penjelasan visual dan elemen interaktif untuk meningkatkan pemahaman Anda.</p>
+        </section>
+        
+        <section id="teori-atom" class="content-section hidden">
+            <h2><i class="fas fa-history"></i> Perkembangan Teori Atom</h2>
+            <p>Teori atom telah berkembang selama berabad-abad, dimulai dari gagasan filosofis hingga model ilmiah yang didukung oleh eksperimen. Berikut adalah garis waktu perkembangan teori atom:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Abad ke-5 SM</div>
+                        <h3>Democritus</h3>
+                        <p>Filsuf Yunani yang pertama kali mengemukakan konsep atom sebagai partikel terkecil yang tidak dapat dibagi lagi.</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/3498db/ffffff?text=Democritus+Atom" alt="Model Atom Democritus">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1803</div>
+                        <h3>John Dalton</h3>
+                        <p>Mengajukan teori atom modern pertama berdasarkan penelitiannya tentang gas. Dalton menyatakan bahwa atom adalah partikel terkecil yang tidak dapat dibagi dan setiap unsur terdiri dari atom-atom yang identik.</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/2ecc71/ffffff?text=Model+Dalton" alt="Model Atom Dalton">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1897</div>
+                        <h3>J.J. Thomson</h3>
+                        <p>Menemukan elektron melalui eksperimen tabung sinar katoda. Mengusulkan model "plum pudding" di mana elektron tersebar dalam bola bermuatan positif.</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/e74c3c/ffffff?text=Model+Thomson" alt="Model Atom Thomson">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1911</div>
+                        <h3>Ernest Rutherford</h3>
+                        <p>Melakukan eksperimen hamburan partikel alpha yang menghasilkan model atom nuklir dengan inti padat bermuatan positif dikelilingi oleh elektron.</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/9b59b6/ffffff?text=Model+Rutherford" alt="Model Atom Rutherford">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1913</div>
+                        <h3>Niels Bohr</h3>
+                        <p>Mengusulkan model atom dengan elektron yang mengorbit inti pada tingkat energi tertentu (kulit elektron).</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/f39c12/ffffff?text=Model+Bohr" alt="Model Atom Bohr">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1926</div>
+                        <h3>Erwin Schrodinger</h3>
+                        <p>Mengembangkan model atom mekanika kuantum dengan orbital elektron yang menggambarkan probabilitas menemukan elektron.</p>
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/1abc9c/ffffff?text=Model+Kuantum" alt="Model Atom Kuantum">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-chart-bar"></i> Perbandingan Model Atom</h3>
+            <div class="atomic-model">
+                <div class="model-card">
+                    <div class="model-header">Thomson</div>
+                    <div class="model-body">
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/e74c3c/ffffff?text=Plum+Pudding" alt="Model Plum Pudding">
+                        </div>
+                        <p>Atom sebagai bola bermuatan positif dengan elektron tersebar di dalamnya seperti kismis dalam puding.</p>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-header">Rutherford</div>
+                    <div class="model-body">
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/9b59b6/ffffff?text=Model+Nuklir" alt="Model Nuklir">
+                        </div>
+                        <p>Atom memiliki inti padat bermuatan positif yang dikelilingi oleh elektron yang bergerak.</p>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-header">Bohr</div>
+                    <div class="model-body">
+                        <div class="model-diagram">
+                            <img src="https://via.placeholder.com/200x150/f39c12/ffffff?text=Model+Planet" alt="Model Planet">
+                        </div>
+                        <p>Elektron mengelilingi inti dalam orbit tertentu dengan tingkat energi tertentu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="notasi-unsur" class="content-section hidden">
+            <h2><i class="fas fa-flask"></i> Notasi Unsur dan Partikel Atom</h2>
+            <p>Notasi unsur digunakan untuk merepresentasikan atom suatu unsur dengan informasi tentang komposisinya. Notasi ini memberikan informasi penting tentang nomor atom dan nomor massa.</p>
+            
+            <h3><i class="fas fa-cube"></i> Struktur Notasi Unsur</h3>
+            <div class="notation-example">
+                <div class="notation-box">A</div>
+                <div class="notation-box">X</div>
+                <div class="notation-box">Z</div>
+            </div>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <p><strong>X</strong> = Simbol unsur</p>
+                <p><strong>Z</strong> = Nomor atom (jumlah proton)</p>
+                <p><strong>A</strong> = Nomor massa (jumlah proton + neutron)</p>
+            </div>
+            
+            <div class="atom-visualization" id="atom-visualization">
+                <!-- Visualisasi atom akan dibuat dengan JavaScript -->
+            </div>
+            
+            <h3><i class="fas fa-puzzle-piece"></i> Partikel Penyusun Atom</h3>
+            <div class="element-info">
+                <div class="element-card">
+                    <div class="element-symbol">p⁺</div>
+                    <div class="element-name">Proton</div>
+                    <div class="element-details">
+                        <p>Muatan: +1</p>
+                        <p>Massa: 1 sma</p>
+                        <p>Lokasi: Inti atom</p>
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-symbol">n⁰</div>
+                    <div class="element-name">Neutron</div>
+                    <div class="element-details">
+                        <p>Muatan: 0</p>
+                        <p>Massa: 1 sma</p>
+                        <p>Lokasi: Inti atom</p>
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-symbol">e⁻</div>
+                    <div class="element-name">Elektron</div>
+                    <div class="element-details">
+                        <p>Muatan: -1</p>
+                        <p>Massa: ~0 sma</p>
+                        <p>Lokasi: Mengelilingi inti</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-calculator"></i> Kalkulator Notasi Unsur</h3>
+            <div class="notation-calculator">
+                <p>Masukkan nilai untuk menghitung partikel subatomik:</p>
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="symbol-input">Simbol Unsur</label>
+                        <input type="text" id="symbol-input" placeholder="Contoh: Na">
+                    </div>
+                    <div class="form-group">
+                        <label for="atomic-number">Nomor Atom (Z)</label>
+                        <input type="number" id="atomic-number" placeholder="Contoh: 11">
+                    </div>
+                    <div class="form-group">
+                        <label for="mass-number">Nomor Massa (A)</label>
+                        <input type="number" id="mass-number" placeholder="Contoh: 23">
+                    </div>
+                    <div class="form-group">
+                        <label for="charge">Muatan Ion</label>
+                        <input type="number" id="charge" placeholder="Contoh: +1 atau -2">
+                    </div>
+                </div>
+                <button class="btn" id="calculate-btn"><i class="fas fa-calculator"></i> Hitung</button>
+                <div id="calculation-result" style="margin-top: 1rem;"></div>
+            </div>
+            
+            <h3><i class="fas fa-vial"></i> Contoh Notasi Unsur</h3>
+            <div class="interactive-section">
+                <div class="notation-example">
+                    <div class="notation-box">12</div>
+                    <div class="notation-box">C</div>
+                    <div class="notation-box">6</div>
+                </div>
+                <p style="text-align: center;">Karbon-12: 6 proton, 6 neutron, 6 elektron</p>
+                
+                <div class="notation-example" style="margin-top: 2rem;">
+                    <div class="notation-box">16</div>
+                    <div class="notation-box">O</div>
+                    <div class="notation-box">8</div>
+                </div>
+                <p style="text-align: center;">Oksigen-16: 8 proton, 8 neutron, 8 elektron</p>
+            </div>
+            
+            <h3><i class="fas fa-atom"></i> Isotop</h3>
+            <p>Isotop adalah atom-atom dari unsur yang sama dengan jumlah proton sama tetapi jumlah neutron berbeda. Contoh:</p>
+            <div class="element-info">
+                <div class="element-card">
+                    <div class="element-symbol">¹²C</div>
+                    <div class="element-name">Karbon-12</div>
+                    <div class="element-details">
+                        <p>Proton: 6</p>
+                        <p>Neutron: 6</p>
+                        <p>Kelimpahan: 98.9%</p>
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-symbol">¹³C</div>
+                    <div class="element-name">Karbon-13</div>
+                    <div class="element-details">
+                        <p>Proton: 6</p>
+                        <p>Neutron: 7</p>
+                        <p>Kelimpahan: 1.1%</p>
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-symbol">¹⁴C</div>
+                    <div class="element-name">Karbon-14</div>
+                    <div class="element-details">
+                        <p>Proton: 6</p>
+                        <p>Neutron: 8</p>
+                        <p>Kelimpahan: Jejak</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="kuis" class="content-section hidden">
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
+            <p>Uji pemahaman Anda tentang teori atom dan notasi unsur dengan kuis berikut!</p>
+            
+            <div class="quiz-container">
+                <div class="question" id="question1">
+                    <h3>Pertanyaan 1: Siapa ilmuwan yang pertama kali mengusulkan model atom "plum pudding"?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">John Dalton</div>
+                        <div class="option" data-correct="true">J.J. Thomson</div>
+                        <div class="option" data-correct="false">Ernest Rutherford</div>
+                        <div class="option" data-correct="false">Niels Bohr</div>
+                    </div>
+                    <div class="result hidden"></div>
+                </div>
+                
+                <div class="question" id="question2">
+                    <h3>Pertanyaan 2: Dalam notasi unsur <sup>23</sup>Na<sub>11</sub>, berapa jumlah neutron yang dimiliki atom tersebut?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">11</div>
+                        <div class="option" data-correct="false">23</div>
+                        <div class="option" data-correct="true">12</div>
+                        <div class="option" data-correct="false">34</div>
+                    </div>
+                    <div class="result hidden"></div>
+                </div>
+                
+                <div class="question" id="question3">
+                    <h3>Pertanyaan 3: Partikel apa yang ditemukan oleh Ernest Rutherford dalam eksperimen hamburannya?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">Elektron</div>
+                        <div class="option" data-correct="false">Neutron</div>
+                        <div class="option" data-correct="true">Inti atom</div>
+                        <div class="option" data-correct="false">Proton</div>
+                    </div>
+                    <div class="result hidden"></div>
+                </div>
+                
+                <div class="question" id="question4">
+                    <h3>Pertanyaan 4: Apa yang dimaksud dengan isotop?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">Atom dengan jumlah elektron berbeda</div>
+                        <div class="option" data-correct="false">Atom dari unsur yang berbeda</div>
+                        <div class="option" data-correct="true">Atom dengan jumlah proton sama tetapi neutron berbeda</div>
+                        <div class="option" data-correct="false">Atom dengan muatan listrik</div>
+                    </div>
+                    <div class="result hidden"></div>
+                </div>
+                
+                <button class="btn" id="check-answers"><i class="fas fa-check-circle"></i> Periksa Jawaban</button>
+                <button class="btn" id="reset-quiz"><i class="fas fa-redo"></i> Ulangi Kuis</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Media Pembelajaran Interaktif Kimia - Teori Atom dan Notasi Unsur</p>
+        <p>© 2023 - Dibuat untuk tujuan edukasi</p>
+    </footer>
+
+    <script>
+        // Navigasi antar bagian
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hapus kelas aktif dari semua link
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.remove('active');
+                });
+                
+                // Tambah kelas aktif ke link yang diklik
+                this.classList.add('active');
+                
+                // Sembunyikan semua bagian konten
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // Tampilkan bagian konten yang sesuai
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.remove('hidden');
+                
+                // Jika menuju bagian notasi unsur, buat visualisasi atom
+                if (targetId === 'notasi-unsur') {
+                    createAtomVisualization();
+                }
+            });
+        });
+        
+        // Fungsi kuis
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Hapus seleksi dari opsi lain dalam pertanyaan yang sama
+                const parentQuestion = this.closest('.question');
+                parentQuestion.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Tandai opsi yang dipilih
+                this.classList.add('selected');
+            });
+        });
+        
+        document.getElementById('check-answers').addEventListener('click', function() {
+            document.querySelectorAll('.question').forEach(question => {
+                const selectedOption = question.querySelector('.option.selected');
+                const resultDiv = question.querySelector('.result');
+                
+                if (selectedOption) {
+                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                    
+                    if (isCorrect) {
+                        resultDiv.textContent = 'Jawaban Benar!';
+                        resultDiv.className = 'result correct';
+                    } else {
+                        resultDiv.textContent = 'Jawaban Salah. Coba lagi!';
+                        resultDiv.className = 'result incorrect';
+                    }
+                    
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    const resultDiv = question.querySelector('.result');
+                    resultDiv.textContent = 'Silakan pilih jawaban terlebih dahulu.';
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.classList.remove('hidden');
+                }
+            });
+        });
+        
+        document.getElementById('reset-quiz').addEventListener('click', function() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.result').forEach(result => {
+                result.classList.add('hidden');
+            });
+        });
+        
+        // Kalkulator notasi unsur
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const symbol = document.getElementById('symbol-input').value || 'X';
+            const Z = parseInt(document.getElementById('atomic-number').value);
+            const A = parseInt(document.getElementById('mass-number').value);
+            const charge = parseInt(document.getElementById('charge').value) || 0;
+            
+            if (!Z || !A) {
+                document.getElementById('calculation-result').innerHTML = '<div class="result incorrect">Masukkan nomor atom (Z) dan nomor massa (A) terlebih dahulu.</div>';
+                return;
+            }
+            
+            const proton = Z;
+            const neutron = A - Z;
+            const electron = proton - charge;
+            
+            document.getElementById('calculation-result').innerHTML = `
+                <div class="result correct">
+                    <h4>Hasil Perhitungan untuk ${symbol}:</h4>
+                    <p>Proton (Z): ${proton}</p>
+                    <p>Neutron (A-Z): ${neutron}</p>
+                    <p>Elektron: ${electron} ${charge !== 0 ? '(termasuk muatan ' + (charge > 0 ? '+' + charge : charge) + ')' : ''}</p>
+                </div>
+            `;
+        });
+        
+        // Visualisasi atom
+        function createAtomVisualization() {
+            const container = document.getElementById('atom-visualization');
+            container.innerHTML = '';
+            
+            // Buat inti atom
+            const nucleus = document.createElement('div');
+            nucleus.className = 'nucleus';
+            container.appendChild(nucleus);
+            
+            // Buat orbit dan elektron
+            const orbits = [100, 150, 200];
+            const electronsPerOrbit = [2, 8, 8];
+            
+            orbits.forEach((radius, orbitIndex) => {
+                const orbit = document.createElement('div');
+                orbit.className = 'orbit';
+                orbit.style.width = `${radius * 2}px`;
+                orbit.style.height = `${radius * 2}px`;
+                container.appendChild(orbit);
+                
+                // Buat elektron di orbit ini
+                for (let i = 0; i < electronsPerOrbit[orbitIndex]; i++) {
+                    const electron = document.createElement('div');
+                    electron.className = 'electron';
+                    
+                    // Hitung posisi elektron
+                    const angle = (i / electronsPerOrbit[orbitIndex]) * 2 * Math.PI;
+                    const x = radius * Math.cos(angle);
+                    const y = radius * Math.sin(angle);
+                    
+                    electron.style.left = `calc(50% + ${x}px)`;
+                    electron.style.top = `calc(50% + ${y}px)`;
+                    
+                    container.appendChild(electron);
+                }
+            });
+        }
+        
+        // Buat visualisasi atom saat halaman dimuat
+        window.addEventListener('load', function() {
+            createAtomVisualization();
+        });
+    </script>
+</body>
+</html>
