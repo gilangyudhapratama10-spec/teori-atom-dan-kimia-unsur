@@ -494,6 +494,74 @@
             border-radius: 4px;
         }
         
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e9f7fe;
+        }
+        
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .isotop-isobar-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .iso-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .iso-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .iso-card h4 i {
+            margin-right: 8px;
+        }
+        
         @media (max-width: 768px) {
             .timeline::after {
                 left: 31px;
@@ -525,6 +593,10 @@
             .atomic-model {
                 flex-direction: column;
             }
+            
+            .isotop-isobar-section {
+                flex-direction: column;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -549,7 +621,7 @@
     <div class="container">
         <section id="intro" class="content-section">
             <h2><i class="fas fa-book-open"></i> Pengantar Pembelajaran</h2>
-            <p>Selamat datang di media pembelajaran interaktif tentang perkembangan teori atom dan notasi unsur. Di sini Anda akan mempelajari bagaimana pemahaman manusia tentang atom berkembang dari waktu ke waktu, serta bagaimana notasi unsur digunakan untuk merepresentasikan atom-atom tersebut.</p>
+            <p>Selamat datang di media pembelajaran interaktif tentang perkembangan teori atom dan notasi unsur. Di sini siswa akan mempelajari bagaimana pemahaman manusia tentang atom berkembang dari waktu ke waktu, serta bagaimana notasi unsur digunakan untuk merepresentasikan atom-atom tersebut.</p>
             
             <div class="interactive-section">
                 <h3><i class="fas fa-lightbulb"></i> Apa yang akan Anda pelajari?</h3>
@@ -558,6 +630,7 @@
                     <li><i class="fas fa-check-circle"></i> Kontribusi ilmuwan seperti Dalton, Thomson, Rutherford, Bohr, dan Schrodinger</li>
                     <li><i class="fas fa-check-circle"></i> Memahami notasi unsur dan partikel penyusun atom</li>
                     <li><i class="fas fa-check-circle"></i> Mengidentifikasi nomor atom, nomor massa, dan isotop</li>
+                    <li><i class="fas fa-check-circle"></i> Memahami konsep isotop, isobar, dan isoton</li>
                     <li><i class="fas fa-check-circle"></i> Menguji pemahaman dengan kuis interaktif</li>
                 </ul>
             </div>
@@ -583,7 +656,7 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1803</div>
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Tahun 1803</div>
                         <h3>John Dalton</h3>
                         <p>Mengajukan teori atom modern pertama berdasarkan penelitiannya tentang gas. Dalton menyatakan bahwa atom adalah partikel terkecil yang tidak dapat dibagi dan setiap unsur terdiri dari atom-atom yang identik.</p>
                         <div class="model-diagram">
@@ -594,7 +667,7 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1897</div>
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Tahun 1897</div>
                         <h3>J.J. Thomson</h3>
                         <p>Menemukan elektron melalui eksperimen tabung sinar katoda. Mengusulkan model "plum pudding" di mana elektron tersebar dalam bola bermuatan positif.</p>
                         <div class="model-diagram">
@@ -605,7 +678,7 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1911</div>
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Tahun 1911</div>
                         <h3>Ernest Rutherford</h3>
                         <p>Melakukan eksperimen hamburan partikel alpha yang menghasilkan model atom nuklir dengan inti padat bermuatan positif dikelilingi oleh elektron.</p>
                         <div class="model-diagram">
@@ -616,7 +689,7 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1913</div>
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Tahun 1913</div>
                         <h3>Niels Bohr</h3>
                         <p>Mengusulkan model atom dengan elektron yang mengorbit inti pada tingkat energi tertentu (kulit elektron).</p>
                         <div class="model-diagram">
@@ -627,7 +700,7 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 1926</div>
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> Tahun 1926</div>
                         <h3>Erwin Schrodinger</h3>
                         <p>Mengembangkan model atom mekanika kuantum dengan orbital elektron yang menggambarkan probabilitas menemukan elektron.</p>
                         <div class="model-diagram">
@@ -677,9 +750,9 @@
             
             <h3><i class="fas fa-cube"></i> Struktur Notasi Unsur</h3>
             <div class="notation-example">
-                <div class="notation-box">A</div>
+                <div class="notation-box"><sup>A</sup></div>
                 <div class="notation-box">X</div>
-                <div class="notation-box">Z</div>
+                <div class="notation-box"><sub>Z</sub></div>
             </div>
             <div style="text-align: center; margin-bottom: 2rem;">
                 <p><strong>X</strong> = Simbol unsur</p>
@@ -694,7 +767,7 @@
             <h3><i class="fas fa-puzzle-piece"></i> Partikel Penyusun Atom</h3>
             <div class="element-info">
                 <div class="element-card">
-                    <div class="element-symbol">p⁺</div>
+                    <div class="element-symbol">p<sup>+</sup></div>
                     <div class="element-name">Proton</div>
                     <div class="element-details">
                         <p>Muatan: +1</p>
@@ -704,7 +777,7 @@
                 </div>
                 
                 <div class="element-card">
-                    <div class="element-symbol">n⁰</div>
+                    <div class="element-symbol">n<sup>0</sup></div>
                     <div class="element-name">Neutron</div>
                     <div class="element-details">
                         <p>Muatan: 0</p>
@@ -714,7 +787,7 @@
                 </div>
                 
                 <div class="element-card">
-                    <div class="element-symbol">e⁻</div>
+                    <div class="element-symbol">e<sup>-</sup></div>
                     <div class="element-name">Elektron</div>
                     <div class="element-details">
                         <p>Muatan: -1</p>
@@ -752,52 +825,124 @@
             <h3><i class="fas fa-vial"></i> Contoh Notasi Unsur</h3>
             <div class="interactive-section">
                 <div class="notation-example">
-                    <div class="notation-box">12</div>
+                    <div class="notation-box"><sup>12</sup></div>
                     <div class="notation-box">C</div>
-                    <div class="notation-box">6</div>
+                    <div class="notation-box"><sub>6</sub></div>
                 </div>
                 <p style="text-align: center;">Karbon-12: 6 proton, 6 neutron, 6 elektron</p>
                 
                 <div class="notation-example" style="margin-top: 2rem;">
-                    <div class="notation-box">16</div>
+                    <div class="notation-box"><sup>16</sup></div>
                     <div class="notation-box">O</div>
-                    <div class="notation-box">8</div>
+                    <div class="notation-box"><sub>8</sub></div>
                 </div>
                 <p style="text-align: center;">Oksigen-16: 8 proton, 8 neutron, 8 elektron</p>
             </div>
             
-            <h3><i class="fas fa-atom"></i> Isotop</h3>
-            <p>Isotop adalah atom-atom dari unsur yang sama dengan jumlah proton sama tetapi jumlah neutron berbeda. Contoh:</p>
-            <div class="element-info">
-                <div class="element-card">
-                    <div class="element-symbol">¹²C</div>
-                    <div class="element-name">Karbon-12</div>
-                    <div class="element-details">
-                        <p>Proton: 6</p>
-                        <p>Neutron: 6</p>
-                        <p>Kelimpahan: 98.9%</p>
+            <h3><i class="fas fa-atom"></i> Isotop, Isobar, dan Isoton</h3>
+            <p>Berikut adalah perbedaan antara isotop, isobar, dan isoton:</p>
+            
+            <div class="isotop-isobar-section">
+                <div class="iso-card">
+                    <h4><i class="fas fa-exchange-alt"></i> Isotop</h4>
+                    <p>Atom-atom dari unsur yang sama (Z sama) tetapi memiliki nomor massa (A) berbeda.</p>
+                    <div class="example-box">
+                        <div class="example-title">Contoh:</div>
+                        <p><sup>12</sup>C<sub>6</sub> dan <sup>14</sup>C<sub>6</sub></p>
+                        <p>Kedua atom memiliki 6 proton, tetapi berbeda jumlah neutron.</p>
                     </div>
                 </div>
                 
-                <div class="element-card">
-                    <div class="element-symbol">¹³C</div>
-                    <div class="element-name">Karbon-13</div>
-                    <div class="element-details">
-                        <p>Proton: 6</p>
-                        <p>Neutron: 7</p>
-                        <p>Kelimpahan: 1.1%</p>
+                <div class="iso-card">
+                    <h4><i class="fas fa-balance-scale"></i> Isobar</h4>
+                    <p>Atom-atom dari unsur berbeda (Z berbeda) tetapi memiliki nomor massa (A) sama.</p>
+                    <div class="example-box">
+                        <div class="example-title">Contoh:</div>
+                        <p><sup>14</sup>C<sub>6</sub> dan <sup>14</sup>N<sub>7</sub></p>
+                        <p>Kedua atom memiliki nomor massa 14, tetapi berbeda jumlah proton.</p>
                     </div>
                 </div>
                 
-                <div class="element-card">
-                    <div class="element-symbol">¹⁴C</div>
-                    <div class="element-name">Karbon-14</div>
-                    <div class="element-details">
-                        <p>Proton: 6</p>
-                        <p>Neutron: 8</p>
-                        <p>Kelimpahan: Jejak</p>
+                <div class="iso-card">
+                    <h4><i class="fas fa-equals"></i> Isoton</h4>
+                    <p>Atom-atom dari unsur berbeda (Z berbeda) tetapi memiliki jumlah neutron sama.</p>
+                    <div class="example-box">
+                        <div class="example-title">Contoh:</div>
+                        <p><sup>14</sup>C<sub>6</sub> dan <sup>15</sup>N<sub>7</sub></p>
+                        <p>Kedua atom memiliki 8 neutron, tetapi berbeda jumlah proton.</p>
                     </div>
                 </div>
+            </div>
+            
+            <h3><i class="fas fa-table"></i> Perbandingan Isotop, Isobar, dan Isoton</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Konsep</th>
+                        <th>Definisi</th>
+                        <th>Persamaan</th>
+                        <th>Perbedaan</th>
+                        <th>Contoh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Isotop</strong></td>
+                        <td>Atom unsur sama dengan nomor massa berbeda</td>
+                        <td>Nomor atom (Z)</td>
+                        <td>Nomor massa (A)</td>
+                        <td><sup>12</sup>C<sub>6</sub>, <sup>13</sup>C<sub>6</sub>, <sup>14</sup>C<sub>6</sub></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Isobar</strong></td>
+                        <td>Atom unsur berbeda dengan nomor massa sama</td>
+                        <td>Nomor massa (A)</td>
+                        <td>Nomor atom (Z)</td>
+                        <td><sup>14</sup>C<sub>6</sub>, <sup>14</sup>N<sub>7</sub></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Isoton</strong></td>
+                        <td>Atom unsur berbeda dengan jumlah neutron sama</td>
+                        <td>Jumlah neutron</td>
+                        <td>Nomor atom (Z) dan nomor massa (A)</td>
+                        <td><sup>14</sup>C<sub>6</sub>, <sup>15</sup>N<sub>7</sub></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3><i class="fas fa-cogs"></i> Latihan Identifikasi Isotop, Isobar, dan Isoton</h3>
+            <div class="interactive-section">
+                <p>Masukkan data dua atom untuk mengetahui hubungannya:</p>
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="atom1-symbol">Simbol Atom 1</label>
+                        <input type="text" id="atom1-symbol" placeholder="Contoh: C">
+                    </div>
+                    <div class="form-group">
+                        <label for="atom1-Z">Nomor Atom (Z)</label>
+                        <input type="number" id="atom1-Z" placeholder="Contoh: 6">
+                    </div>
+                    <div class="form-group">
+                        <label for="atom1-A">Nomor Massa (A)</label>
+                        <input type="number" id="atom1-A" placeholder="Contoh: 12">
+                    </div>
+                </div>
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="atom2-symbol">Simbol Atom 2</label>
+                        <input type="text" id="atom2-symbol" placeholder="Contoh: N">
+                    </div>
+                    <div class="form-group">
+                        <label for="atom2-Z">Nomor Atom (Z)</label>
+                        <input type="number" id="atom2-Z" placeholder="Contoh: 7">
+                    </div>
+                    <div class="form-group">
+                        <label for="atom2-A">Nomor Massa (A)</label>
+                        <input type="number" id="atom2-A" placeholder="Contoh: 14">
+                    </div>
+                </div>
+                <button class="btn" id="check-relation-btn"><i class="fas fa-search"></i> Cek Hubungan</button>
+                <div id="relation-result" style="margin-top: 1rem;"></div>
             </div>
         </section>
         
@@ -813,6 +958,7 @@
                         <div class="option" data-correct="true">J.J. Thomson</div>
                         <div class="option" data-correct="false">Ernest Rutherford</div>
                         <div class="option" data-correct="false">Niels Bohr</div>
+                        <div class="option" data-correct="false">Democritus</div>
                     </div>
                     <div class="result hidden"></div>
                 </div>
@@ -824,6 +970,7 @@
                         <div class="option" data-correct="false">23</div>
                         <div class="option" data-correct="true">12</div>
                         <div class="option" data-correct="false">34</div>
+                        <div class="option" data-correct="false">13</div>
                     </div>
                     <div class="result hidden"></div>
                 </div>
@@ -835,6 +982,7 @@
                         <div class="option" data-correct="false">Neutron</div>
                         <div class="option" data-correct="true">Inti atom</div>
                         <div class="option" data-correct="false">Proton</div>
+                        <div class="option" data-correct="false">Nukleus</div>
                     </div>
                     <div class="result hidden"></div>
                 </div>
@@ -846,6 +994,19 @@
                         <div class="option" data-correct="false">Atom dari unsur yang berbeda</div>
                         <div class="option" data-correct="true">Atom dengan jumlah proton sama tetapi neutron berbeda</div>
                         <div class="option" data-correct="false">Atom dengan muatan listrik</div>
+                        <div class="option" data-correct="false">Atom dengan jumlah neutron yang sama</div>
+                    </div>
+                    <div class="result hidden"></div>
+                </div>
+                
+                <div class="question" id="question5">
+                    <h3>Pertanyaan 5: Dua atom dengan nomor massa sama tetapi nomor atom berbeda disebut?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">Isotop</div>
+                        <div class="option" data-correct="true">Isobar</div>
+                        <div class="option" data-correct="false">Isoton</div>
+                        <div class="option" data-correct="false">Isomer</div>
+                        <div class="option" data-correct="false">Isotonic</div>
                     </div>
                     <div class="result hidden"></div>
                 </div>
@@ -858,7 +1019,7 @@
     
     <footer>
         <p>Media Pembelajaran Interaktif Kimia - Teori Atom dan Notasi Unsur</p>
-        <p>© 2023 - Dibuat untuk tujuan edukasi</p>
+        <p>© 2025 - Gilang Yuda Pratama</p>
     </footer>
 
     <script>
@@ -959,10 +1120,56 @@
             
             document.getElementById('calculation-result').innerHTML = `
                 <div class="result correct">
-                    <h4>Hasil Perhitungan untuk ${symbol}:</h4>
+                    <h4>Hasil Perhitungan untuk <sup>${A}</sup>${symbol}<sub>${Z}</sub>:</h4>
                     <p>Proton (Z): ${proton}</p>
                     <p>Neutron (A-Z): ${neutron}</p>
                     <p>Elektron: ${electron} ${charge !== 0 ? '(termasuk muatan ' + (charge > 0 ? '+' + charge : charge) + ')' : ''}</p>
+                </div>
+            `;
+        });
+        
+        // Cek hubungan isotop, isobar, isoton
+        document.getElementById('check-relation-btn').addEventListener('click', function() {
+            const symbol1 = document.getElementById('atom1-symbol').value || 'X';
+            const Z1 = parseInt(document.getElementById('atom1-Z').value);
+            const A1 = parseInt(document.getElementById('atom1-A').value);
+            
+            const symbol2 = document.getElementById('atom2-symbol').value || 'Y';
+            const Z2 = parseInt(document.getElementById('atom2-Z').value);
+            const A2 = parseInt(document.getElementById('atom2-A').value);
+            
+            if (!Z1 || !A1 || !Z2 || !A2) {
+                document.getElementById('relation-result').innerHTML = '<div class="result incorrect">Masukkan semua nilai Z dan A terlebih dahulu.</div>';
+                return;
+            }
+            
+            const neutron1 = A1 - Z1;
+            const neutron2 = A2 - Z2;
+            
+            let relation = '';
+            let explanation = '';
+            
+            if (Z1 === Z2 && A1 !== A2) {
+                relation = 'Isotop';
+                explanation = `Kedua atom adalah isotop karena memiliki nomor atom sama (Z = ${Z1}) tetapi nomor massa berbeda (${A1} vs ${A2}).`;
+            } else if (A1 === A2 && Z1 !== Z2) {
+                relation = 'Isobar';
+                explanation = `Kedua atom adalah isobar karena memiliki nomor massa sama (A = ${A1}) tetapi nomor atom berbeda (${Z1} vs ${Z2}).`;
+            } else if (neutron1 === neutron2 && Z1 !== Z2) {
+                relation = 'Isoton';
+                explanation = `Kedua atom adalah isoton karena memiliki jumlah neutron sama (${neutron1}) tetapi nomor atom berbeda (${Z1} vs ${Z2}).`;
+            } else {
+                relation = 'Tidak ada hubungan khusus';
+                explanation = `Kedua atom tidak memiliki hubungan isotop, isobar, atau isoton.`;
+            }
+            
+            document.getElementById('relation-result').innerHTML = `
+                <div class="result correct">
+                    <h4>Hasil Analisis:</h4>
+                    <p><strong>Hubungan:</strong> ${relation}</p>
+                    <p>${explanation}</p>
+                    <p><strong>Atom 1:</strong> <sup>${A1}</sup>${symbol1}<sub>${Z1}</sub> (${Z1} proton, ${neutron1} neutron)</p>
+                    <p><strong>Atom 2:</strong> <sup>${A2}</sup>${symbol2}<sub>${Z2}</sub> (${Z2} proton, ${neutron2} neutron)</p>
                 </div>
             `;
         });
